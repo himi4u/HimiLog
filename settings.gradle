@@ -1,0 +1,3 @@
+rootProject.name = "HimiLog"
+include ':app'
+include ':Loglibrary'
