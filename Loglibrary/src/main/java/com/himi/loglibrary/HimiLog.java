@@ -6,11 +6,18 @@ import androidx.annotation.NonNull;
 
 import com.himi.loglibrary.interfaces.HimiLogPrinter;
 import com.himi.loglibrary.manage.HimiLogManager;
+import com.himi.loglibrary.util.HimiStackTraceUtil;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class HimiLog {
+    //包名
+    public static final String PACKAGE_NAME;
+    static {
+        String className = LogConfig.class.getName();
+        PACKAGE_NAME = className.substring(0, className.lastIndexOf("."));
+    }
     public static void v(Object... data) {
         vTag(HimiLogManager.getInstance().getConfig().getGlobalTag(), data);
     }
@@ -76,7 +83,7 @@ public class HimiLog {
         }
         //判断堆栈深度是否大于0，大于0显示堆栈信息
         if (config.stackTraceDepth() > 0) {
-            String stackTraceInfo = LogConfig.STACK_TRACE_FORMATTER.format(new Throwable().getStackTrace());
+            String stackTraceInfo = LogConfig.STACK_TRACE_FORMATTER.format(HimiStackTraceUtil.getCroppedStackTrace(new Throwable().getStackTrace(),PACKAGE_NAME,config.stackTraceDepth()));
             sb.append(stackTraceInfo);
             sb.append("\n");
         }

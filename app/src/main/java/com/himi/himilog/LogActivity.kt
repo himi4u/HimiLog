@@ -21,7 +21,7 @@ class LogActivity : AppCompatActivity() {
             }
 
             override fun stackTraceDepth(): Int {
-                return 3
+                return 0
             }
         },HimiLogType.e,"himi","哈哈哈")
         HimiLog.i("嘟嘟嘟嘟嘟")
