@@ -23,6 +23,7 @@ public class HimiConsolePrinter implements HimiLogPrinter {
             for (int i = 0; i < countOfSub; i++) {
                 //打印每一行的日志
                 Log.println(level, tag, printString.substring(currentLen, currentLen + MAX_LINE_LENGTH));
+                currentLen+=MAX_LINE_LENGTH;
             }
             if (currentLen != length) {
                 //如果两者不相等，说明有不能整除的情况，则需要把剩余的打印

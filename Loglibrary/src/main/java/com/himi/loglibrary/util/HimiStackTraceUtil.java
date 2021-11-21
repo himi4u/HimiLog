@@ -26,14 +26,14 @@ public class HimiStackTraceUtil {
         String className;
 //        for (int i = 0; i < stackDepth; i++) {
 //            className = stackTraceElements[i].getClassName();
-//            if (className != null && className.equals(ignorePackageName)) {
+//            if (className != null && className.startsWith(ignorePackageName)) {
 //                ignoreDepth++;
 //            }
 //        }
-        for (int i = stackDepth - 1; i > 0; i--) {
+        for (int i = stackDepth - 1; i >= 0; i--) {
             className = stackTraceElements[i].getClassName();
             if (className != null && className.startsWith(ignorePackageName)) {
-                ignoreDepth = i + 1;
+                ignoreDepth++;
             }
         }
         int realDepth = stackDepth - ignoreDepth;
